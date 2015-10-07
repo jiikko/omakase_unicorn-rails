@@ -1,7 +1,7 @@
 # OmakaseUnicorn::Rails
 
-楽して開発環境で使うnginx + unicornな構成を作るためのgemです。
-生成するファイルは`自己証明書`, `unicorn.conf.rb`, `nginx-site.conf`です
+開発環境で使うnginx と unicornの設定ファイルを作成するgemです。
+自己証明書の作成もできます。
 
 ## Installation
 
@@ -19,21 +19,25 @@ And then execute:
 
 ## Usage
 
-### Generate 各所ファイル
+### Genereate 自己証明書
+need sudo
+```shell
+./bin/generate_crt_and_key
+```
+
+### Generate unicorn.conf.rb, nginx-site.conf
 ```shell
 $ init的ななにかのコマンド
 ```
-自己証明書が不要な場合は`--unicorn` , `--nginx`を付加してください。
-```shell
-$ init的ななにかのコマンド --unicorn --nginx
-```
-unicorn.conf.rbとnginx.confが.project以下に生成されるので、nginx.confはシムリンク貼るのがおすすめ。
+unicorn.conf.rbとnginx.confが./.project以下に生成されます。
+nginx.confはシムリンクを貼るのがおすすめ。
 
-### Start unicorn
+### Unicorn
+### start
 ```
 $ bundle exec unicorn -D -c ./.project/unicorn.conf.rb -E development
 ```
-### Upgrade unicorn
+### upgrade
 ```shell
 $ kill -USR2 `cat ./tmp/pids/unicorn.pid`
 ```
