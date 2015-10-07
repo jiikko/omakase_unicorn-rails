@@ -1,7 +1,6 @@
 app_root_path = "<%= root_path %>"
 
 worker_processes 4
-# user "koji", "koji"
 working_directory app_root_path
 listen "/tmp/.<%= sock_name %>", :backlog => 256
 timeout 90
