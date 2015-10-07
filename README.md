@@ -1,38 +1,46 @@
 # OmakaseUnicorn::Rails
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/omakase_unicorn/rails`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+楽して開発環境で使うnginx + unicornな構成を作るためのgemです。
+生成するファイルは`自己証明書`, `unicorn.conf.rb`, `nginx-site.conf`です
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'omakase_unicorn-rails'
+group :development do
+  gem 'omakase_unicorn-rails', 'jiikko/omakase_unicorn-rails'
+end
 ```
 
 And then execute:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install omakase_unicorn-rails
-
 ## Usage
 
-TODO: Write usage instructions here
+### Generate 各所ファイル
+```shell
+$ init的ななにかのコマンド
+```
+自己証明書が不要な場合は`--unicorn` , `--nginx`を付加してください。
+```shell
+$ init的ななにかのコマンド --unicorn --nginx
+```
+unicorn.conf.rbとnginx.confが.project以下に生成されるので、nginx.confはシムリンク貼るのがおすすめ。
 
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+### Start unicorn
+```
+$ bundle exec unicorn -D -c ./.project/unicorn.conf.rb -E development
+```
+### Upgrade unicorn
+```shell
+$ kill -USR2 `cat ./tmp/pids/unicorn.pid`
+```
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/omakase_unicorn-rails.
+Bug reports and pull requests are welcome on GitHub at https://github.com/jiikko/omakase_unicorn-rails.
 
 
 ## License
