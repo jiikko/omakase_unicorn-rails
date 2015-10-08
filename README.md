@@ -9,7 +9,7 @@ Add this line to your application's Gemfile:
 
 ```ruby
 group :development do
-  gem 'omakase_unicorn-rails', 'jiikko/omakase_unicorn-rails'
+  gem 'omakase_unicorn-rails', github: 'jiikko/omakase_unicorn-rails'
 end
 ```
 
