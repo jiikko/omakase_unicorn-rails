@@ -22,12 +22,12 @@ And then execute:
 ### Genereate 自己証明書
 need sudo
 ```shell
-./bin/generate_crt_and_key
+$ generate_crt_and_key
 ```
 
 ### Generate unicorn.conf.rb, nginx-site.conf
 ```shell
-$ init的ななにかのコマンド
+$ bundle exec rails g omakase_unicorn:rails:config install
 ```
 unicorn.conf.rbとnginx.confが./.project以下に生成されます。
 nginx.confはシムリンクを貼るのがおすすめ。
