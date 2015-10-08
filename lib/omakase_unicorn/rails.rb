@@ -8,13 +8,11 @@ module OmakaseUnicorn
 
       def init
         directory "templates", ".project"
-
-        gsub_file '.project/nginx-site.conf', '{{sock_name}}', 'うぇいうぇい'
-        gsub_file '.project/nginx-site.conf', '{{server_name}}', 'もいもい'
-        gsub_file '.project/nginx-site.conf', '{{root_path}}', 'びょ'
-
-        gsub_file '.project/unicorn.conf.rb', '{{root_path}}', 'びょ'
-        gsub_file '.project/unicorn.conf.rb', '{{sock_name}}', 'うぇいうぇい'
+        gsub_file '.project/nginx-site.conf', '{{sock_name}}', 'aaa'
+        gsub_file '.project/nginx-site.conf', '{{server_name}}', 'bbb'
+        gsub_file '.project/nginx-site.conf', '{{root_path}}', 'zzz'
+        gsub_file '.project/unicorn.conf.rb', '{{root_path}}', 'xxx'
+        gsub_file '.project/unicorn.conf.rb', '{{sock_name}}', 'aaaa'
       end
     end
   end
