@@ -7,9 +7,7 @@ module OmakaseUnicorn
       source_root File.expand_path('../templates', __FILE__)
 
       def init
-        directory ".project"
-        create_file "templates/nginx-site.conf", ".project/nginx-site.conf"
-        create_file "templates/unicorn.conf.rb", ".project/unicorn.conf.rb"
+        directory "templates", ".project"
 
         gsub_file '.project/nginx-site.conf', '{{sock_name}}', 'うぇいうぇい'
         gsub_file '.project/nginx-site.conf', '{{server_name}}', 'もいもい'
