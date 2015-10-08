@@ -8,11 +8,12 @@ module OmakaseUnicorn
 
       def init
         directory "templates", ".project"
-        gsub_file '.project/nginx-site.conf', '{{sock_name}}', 'aaa'
-        gsub_file '.project/nginx-site.conf', '{{server_name}}', 'bbb'
-        gsub_file '.project/nginx-site.conf', '{{root_path}}', 'zzz'
-        gsub_file '.project/unicorn.conf.rb', '{{root_path}}', 'xxx'
-        gsub_file '.project/unicorn.conf.rb', '{{sock_name}}', 'aaaa'
+        app_name = File.basename(::Rails.root).to_s
+        gsub_file '.project/nginx-site.conf', '{{sock_name}}', app_name
+        gsub_file '.project/nginx-site.conf', '{{server_name}}', "#{app_name}.local"
+        gsub_file '.project/nginx-site.conf', '{{root_path}}', ::Rails.root.to_s
+        gsub_file '.project/unicorn.conf.rb', '{{root_path}}', ::Rails.root.to_s
+        gsub_file '.project/unicorn.conf.rb', '{{sock_name}}', app_name
       end
     end
   end
