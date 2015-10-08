@@ -42,6 +42,10 @@ $ bundle exec unicorn -D -c ./.project/unicorn.conf.rb -E development
 $ kill -USR2 `cat ./tmp/pids/unicorn.pid`
 ```
 
+## TODO
+* generate launchd-plist
+
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/jiikko/omakase_unicorn-rails.
