@@ -20,12 +20,14 @@ module OmakaseUnicorn
 
         gsub_file ".project/local.rails.#{app_name}.plist", '{{app_name}}', app_name
         gsub_file ".project/local.rails.#{app_name}.plist", '{{root_path}}', root_path
-        gsub_file ".project/local.rails.#{app_name}.plist", '{{gem_home}}', ENV["GEM_HOME"]
-        # gsub_file ".project/local.rails.#{app_name}.plist", '{{gemdir_path}}', File.dirname(`which bundle`.strip)
-        # gsub_file ".project/local.rails.#{app_name}.plist", '{{ruby_path}}', File.dirname(`which ruby`).strip
+        # MEMO plist内で環境変数を設定するとうまくいかない
+        # gsub_file ".project/local.rails.#{app_name}.plist", '{{gem_home}}', ENV["GEM_HOME"]
+        # gsub_file ".project/local.rails.#{app_name}.plist", '{{bundle_path}}', File.dirname(`which bundle`).strip
         # gsub_file ".project/local.rails.#{app_name}.plist", '{{ruby_path}}', File.dirname(`which ruby`).strip
 
-        # gsub_file ".project/launchd.init.sh", '{{gem_home}}', ENV["GEM_HOME"]
+        gsub_file ".project/launchd.init.sh", '{{gem_home}}', File.dirname(`which bundle`).to_s.gsub("/bin", "")
+        gsub_file ".project/launchd.init.sh", '{{bundle_path}}', File.dirname(`which bundle`).strip
+        gsub_file ".project/launchd.init.sh", '{{ruby_path}}', File.dirname(`which ruby`).strip
       end
 
       private
