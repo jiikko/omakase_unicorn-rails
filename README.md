@@ -19,6 +19,20 @@ And then execute:
 ### Generate unicorn.conf.rb, nginx-site.conf
 ```shell
 $ bundle exec rails g omakase_unicorn:rails:config install
+      create  .project
+      create  .project/nginx-site.conf
+      create  .project/unicorn.conf.rb
+      create  .project/local.rails.antena.plist
+        gsub  .project/nginx-site.conf
+        gsub  .project/nginx-site.conf
+        gsub  .project/nginx-site.conf
+        gsub  .project/unicorn.conf.rb
+        gsub  .project/unicorn.conf.rb
+        gsub  .project/local.rails.antena.plist
+        gsub  .project/local.rails.antena.plist
+        gsub  .project/local.rails.antena.plist
+        gsub  .project/local.rails.antena.plist
+        gsub  .project/local.rails.antena.plist
 ```
 unicorn.conf.rb, nginx-site.conf, launchd用plistが./.project以下に生成されます。
 ```shell
