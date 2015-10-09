@@ -9,7 +9,7 @@
     <key>EnvironmentVariables</key>
     <dict>
       <key>PATH</key>
-      <string>{{gem_home}}</string>
+      <string>/bin:/usr/bin:/bin:/usr/sbin</string>
     </dict>
     <key>ProgramArguments</key>
     <array>
