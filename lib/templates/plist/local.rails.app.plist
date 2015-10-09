@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>Label</key>
+		<string>local.rails.{{app_name}}</string>
+    <key>WorkingDirectory</key>
+    <string>{{root_path}}</string>
+    <key>EnvironmentVariables</key>
+    <dict>
+      <key>PATH</key>
+
+      <string>{{gemdir_path}}:{{ruby_path}}:/usr/bin</string>
+    </dict>
+    <key>ProgramArguments</key>
+    <array>
+      <string>{{gemdir_path}}/bundle</string>
+      <string>exec</string>
+      <string>unicorn</string>
+      <string>-c</string>
+      <string>{{root_path}}/.project/unicorn.conf.rb</string>
+      <string>-E</string>
+      <string>development</string>
+    </array>
+    <key>StandardOutPath</key>
+    <string>{{root_path}}/log/local.rails.app.log</string>
+    <key>StandardErrorPath</key>
+    <string>{{root_path}}/log/local.rails.app.err.log</string>
+    <key>KeepAlive</key>
+    <true/>
+	</dict>
+</plist>

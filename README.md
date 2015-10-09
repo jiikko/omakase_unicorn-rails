@@ -32,19 +32,26 @@ $ bundle exec rails g omakase_unicorn:rails:config install
 unicorn.conf.rbとnginx.confが./.project以下に生成されます。
 nginx.confはシムリンクを貼るのがおすすめ。
 
+for OSX
+```
+$ cp ./.project/local.rails.app_name.plist ~/Library/LaunchAgents/
+$ launchctl load -w local.rails.app_name
+# $ launchctl unload -w local.rails.app_name # delete from launchctl
+$ launchctl start local.rails.app_name
+```
+
 ### Unicorn
 ### start
-```
+```shell
 $ bundle exec unicorn -D -c ./.project/unicorn.conf.rb -E development
+```
+```shell
+$ launchctl start local.rails.app_name
 ```
 ### upgrade
 ```shell
 $ kill -USR2 `cat ./tmp/pids/unicorn.pid`
 ```
-
-## TODO
-* generate launchd-plist
-
 
 ## Contributing
 
@@ -54,4 +61,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/jiikko
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
