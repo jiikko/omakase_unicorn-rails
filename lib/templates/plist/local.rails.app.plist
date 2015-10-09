@@ -15,11 +15,11 @@
     </dict>
     <key>ProgramArguments</key>
     <array>
-      <string>/Users/koji/.rvm/gems/ruby-2.1.0/bin/bundle</string>
+      <string>{{bundle_path}}/bundle</string>
       <string>exec</string>
       <string>unicorn</string>
       <string>-c</string>
-      <string>/Users/koji/sites/outing/.project/unicorn.conf.rb</string>
+      <string>{{root_path}}/.project/unicorn.conf.rb</string>
       <string>-E</string>
       <string>development</string>
     </array>
