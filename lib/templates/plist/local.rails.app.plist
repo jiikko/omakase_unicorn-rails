@@ -2,19 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 	<dict>
-		<key>Label</key>
-		<string>local.rails.{{app_name}}</string>
+    <key>Label</key>
+    <string>local.rails.{{app_name}}</string>
     <key>WorkingDirectory</key>
     <string>{{root_path}}</string>
     <key>EnvironmentVariables</key>
     <dict>
       <key>PATH</key>
-
-      <string>{{gemdir_path}}:{{ruby_path}}:/usr/bin</string>
+      <string>{{gem_home}}</string>
     </dict>
     <key>ProgramArguments</key>
     <array>
-      <string>{{gemdir_path}}/bundle</string>
+      <string>bundle</string>
       <string>exec</string>
       <string>unicorn</string>
       <string>-c</string>
@@ -28,5 +27,5 @@
     <string>{{root_path}}/log/local.rails.app.err.log</string>
     <key>KeepAlive</key>
     <true/>
-	</dict>
+  </dict>
 </plist>

@@ -8,9 +8,7 @@
 Add this line to your application's Gemfile:
 
 ```ruby
-group :development do
-  gem 'omakase_unicorn-rails', github: 'jiikko/omakase_unicorn-rails'
-end
+gem 'omakase_unicorn-rails', github: 'jiikko/omakase_unicorn-rails', group: :development
 ```
 
 And then execute:
@@ -30,13 +28,11 @@ $ generate_crt_and_key
 $ bundle exec rails g omakase_unicorn:rails:config install
 ```
 unicorn.conf.rbとnginx.confが./.project以下に生成されます。
-nginx.confはシムリンクを貼るのがおすすめ。
 
 for OSX
 ```
 $ cp ./.project/local.rails.app_name.plist ~/Library/LaunchAgents/
-$ launchctl load -w local.rails.app_name
-# $ launchctl unload -w local.rails.app_name # delete from launchctl
+$ launchctl load -w ~/Library/LaunchAgents/local.rails.app_name.plist
 $ launchctl start local.rails.app_name
 ```
 
