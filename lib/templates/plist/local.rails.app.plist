@@ -6,9 +6,22 @@
     <string>local.rails.{{app_name}}</string>
     <key>WorkingDirectory</key>
     <string>{{root_path}}</string>
+    <key>EnvironmentVariables</key>
+    <dict>
+      <key>GEM_HOME</key>
+      <string>{{gem_home}}</string>
+      <key>PATH</key>
+      <string>{{bundle_path}}:{{ruby_path}}:/bin:/usr/bin:/bin:/usr/sbin</string>
+    </dict>
     <key>ProgramArguments</key>
     <array>
-      <string>{{root_path}}/.project/launchd.init.sh</string>
+      <string>/Users/koji/.rvm/gems/ruby-2.1.0/bin/bundle</string>
+      <string>exec</string>
+      <string>unicorn</string>
+      <string>-c</string>
+      <string>/Users/koji/sites/outing/.project/unicorn.conf.rb</string>
+      <string>-E</string>
+      <string>development</string>
     </array>
     <key>StandardOutPath</key>
     <string>{{root_path}}/log/local.rails.app.log</string>
