@@ -20,8 +20,11 @@ And then execute:
 ```shell
 $ bundle exec rails g omakase_unicorn:rails:config install
 ```
-unicorn.conf.rb, nginx.conf, launchd用plistが./.project以下に生成されます。
+unicorn.conf.rb, nginx-site.conf, launchd用plistが./.project以下に生成されます。
 ```shell
+# unicorn
+$ bundle exec unicorn -D -c ./.project/unicorn.conf.rb -E development
+# nginx
 $ sudo ln ./.project/nginx-site.conf /etc/nginx/conf.d/
 ```
 
