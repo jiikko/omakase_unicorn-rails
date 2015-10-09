@@ -1,7 +1,6 @@
 # OmakaseUnicorn::Rails
 
 開発環境で使うnginx と unicornの設定ファイルを作成するgemです。
-自己証明書の作成もできます。
 
 ## Installation
 
@@ -17,36 +16,32 @@ And then execute:
 
 ## Usage
 
-### Genereate 自己証明書
-need sudo
-```shell
-$ generate_crt_and_key
-```
-
 ### Generate unicorn.conf.rb, nginx-site.conf
 ```shell
 $ bundle exec rails g omakase_unicorn:rails:config install
 ```
-unicorn.conf.rbとnginx.confが./.project以下に生成されます。
+unicorn.conf.rb, nginx.conf, launchd用plistが./.project以下に生成されます。
+```shell
+$ sudo ln ./.project/nginx-site.conf /etc/nginx/conf.d/
+```
 
-for OSX
+### for OSX
 ```
 $ cp ./.project/local.rails.app_name.plist ~/Library/LaunchAgents/
 $ launchctl load -w ~/Library/LaunchAgents/local.rails.app_name.plist
 $ launchctl start local.rails.app_name
 ```
 
-### Unicorn
-### start
+### Generate 自己証明書
 ```shell
-$ bundle exec unicorn -D -c ./.project/unicorn.conf.rb -E development
-```
-```shell
-$ launchctl start local.rails.app_name
-```
-### upgrade
-```shell
-$ kill -USR2 `cat ./tmp/pids/unicorn.pid`
+openssl genrsa -out server.key 2048
+openssl req -new -key server.key -out server.csr -subj '/C=JP/ST=Tokyo/L=Tokyo/O=Example Ltd./OU=Web/CN=example.com'
+openssl x509 -in server.csr -days 3650 -req -signkey server.key > server.crt
+rm server.csr
+sudo mkdir -p /etc/ssl/certs
+sudo mkdir -p /etc/ssl/private
+sudo mv server.crt /etc/ssl/certs/ssl-cert-snakeoil.pem;
+sudo mv server.key /etc/ssl/private/ssl-cert-snakeoil.key;
 ```
 
 ## Contributing
