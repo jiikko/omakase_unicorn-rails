@@ -1,13 +1,13 @@
 # OmakaseUnicorn::Rails
 
-開発環境で使うnginx と unicornの設定ファイルを作成するgemです。
+This gem generate unicorn.conf.rb and nginx.conf to use at development.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'omakase_unicorn-rails', github: 'jiikko/omakase_unicorn-rails', group: :development
+gem 'omakase_unicorn-rails'
 ```
 
 And then execute:
@@ -18,7 +18,7 @@ And then execute:
 
 ### Generate unicorn.conf.rb, nginx-site.conf
 ```shell
-$ bundle exec rails g omakase_unicorn:rails:config install
+[~/sites/app_name]$ bundle exec rails generate omakase_unicorn:rails:config install
       create  .project
       create  .project/nginx-site.conf
       create  .project/unicorn.conf.rb
@@ -34,12 +34,11 @@ $ bundle exec rails g omakase_unicorn:rails:config install
         gsub  .project/local.rails.app_name.plist
         gsub  .project/local.rails.app_name.plist
 ```
-unicorn.conf.rb, nginx-site.conf, launchd用plistが./.project以下に生成されます。
 ```shell
-# unicorn
-$ bundle exec unicorn -D -c ./.project/unicorn.conf.rb -E development
 # nginx
 $ sudo ln ./.project/nginx-site.conf /etc/nginx/conf.d/
+# unicorn
+$ bundle exec unicorn -D -c ./.project/unicorn.conf.rb -E development
 ```
 
 ### for OSX
@@ -49,7 +48,7 @@ $ launchctl load -w ~/Library/LaunchAgents/local.rails.app_name.plist
 $ launchctl start local.rails.app_name
 ```
 
-### Generate 自己証明書
+### Generate self-signed certificate
 ```shell
 openssl genrsa -out server.key 2048
 openssl req -new -key server.key -out server.csr -subj '/C=JP/ST=Tokyo/L=Tokyo/O=Example Ltd./OU=Web/CN=example.com'
