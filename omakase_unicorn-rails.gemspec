@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["n905i.1214@gmail.com"]
 
   spec.summary       = %q{generate config files.}
-  spec.description   = %q{generate unicorn and nginx config file.}
+  spec.description   = %q{generate unicorn and nginx config file at development.}
   spec.homepage      = "https://github.com/jiikko/omakase_unicorn-rails"
   spec.license       = "MIT"
 
