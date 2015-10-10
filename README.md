@@ -41,7 +41,7 @@ $ sudo ln ./.project/nginx-site.conf /etc/nginx/conf.d/
 $ bundle exec unicorn -D -c ./.project/unicorn.conf.rb -E development
 ```
 
-### for OSX
+#### for OSX
 ```
 $ cp ./.project/local.rails.app_name.plist ~/Library/LaunchAgents/
 $ launchctl load -w ~/Library/LaunchAgents/local.rails.app_name.plist
