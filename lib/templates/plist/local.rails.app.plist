@@ -11,7 +11,7 @@
       <key>GEM_HOME</key>
       <string>{{gem_home}}</string>
       <key>PATH</key>
-      <string>{{bundle_path}}:{{ruby_path}}:/bin:/usr/bin:/bin:/usr/sbin:/usr/local/bin</string>
+      <string>{{bundle_path}}:{{ruby_path}}:/bin:/usr/bin:/bin:/usr/sbin:/usr/local/bin:/Library/TeX/texbin</string>
     </dict>
     <key>ProgramArguments</key>
     <array>
