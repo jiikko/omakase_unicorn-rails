@@ -1,6 +1,6 @@
 # OmakaseUnicorn::Rails
 
-This gem generate unicorn.conf.rb and nginx.conf to use at development.
+This gem generate unicorn.conf.rb and nginx.conf for development.
 
 ## Installation
 
