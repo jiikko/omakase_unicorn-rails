@@ -1,6 +1,6 @@
 app_root_path = "{{root_path}}"
 
-worker_processes 4
+worker_processes 1
 working_directory app_root_path
 listen "/tmp/.{{sock_name}}.sock", :backlog => 256
 listen 8081
