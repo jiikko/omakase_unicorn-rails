@@ -15,7 +15,6 @@ And then execute:
     $ bundle
 
 ## Usage
-
 ### Generate unicorn.conf.rb, nginx-site.conf
 ```shell
 [~/sites/app_name]$ bundle exec rails generate omakase_unicorn:rails:config install
@@ -34,13 +33,24 @@ And then execute:
         gsub  .project/local.rails.app_name.plist
         gsub  .project/local.rails.app_name.plist
 ```
+
+### link nginx conf
+#### for Homebrew
 ```shell
-# nginx
+$ sudo ln ./.project/nginx-site.conf /usr/local/etc/nginx/conf.d
+```
+
+#### for Debian
+```shell
 $ sudo ln ./.project/nginx-site.conf /etc/nginx/conf.d/
-# unicorn
+```
+
+### Start Unicorn
+```shell
 $ bundle exec unicorn -D -c ./.project/unicorn.conf.rb -E development
 ```
 
+### Init script
 #### for OSX
 ```
 $ cp ./.project/local.rails.app_name.plist ~/Library/LaunchAgents/
