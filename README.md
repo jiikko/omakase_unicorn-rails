@@ -66,8 +66,8 @@ openssl x509 -in server.csr -days 3650 -req -signkey server.key > server.crt
 rm server.csr
 sudo mkdir -p /etc/ssl/certs
 sudo mkdir -p /etc/ssl/private
-sudo mv server.crt /etc/ssl/certs/ssl-cert-snakeoil.pem;
-sudo mv server.key /etc/ssl/private/ssl-cert-snakeoil.key;
+sudo mv server.crt /etc/ssl/certs/ssl-cert-snakeoil.pem
+sudo mv server.key /etc/ssl/private/ssl-cert-snakeoil.key
 ```
 
 ## Contributing
